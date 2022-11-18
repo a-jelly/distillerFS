@@ -1167,10 +1167,10 @@ int main(int argc, char *argv[]) {
         }
 
 
-        if (loggedfsArgs->configFilename!=NULL) {
-            g_filter=(filter_desc_t*) malloc(sizeof(filter_desc_t));
-            memset(g_filter,0, sizeof(filter_desc_t));
+        g_filter=(filter_desc_t*) malloc(sizeof(filter_desc_t));
+        memset(g_filter,0, sizeof(filter_desc_t));
 
+        if (loggedfsArgs->configFilename!=NULL) {
             int rc=parse_config(loggedfsArgs->configFilename);         // this function modify g_filter & op_flags
             if (rc!=0) {
                 return rc;

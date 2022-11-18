@@ -3,10 +3,11 @@
 ## Description
 
 DistillerFS is a [FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)-based filesystem which can log operations that happens in it.
+Based on [loggedFS](https://github.com/rflament/loggedfs) code.
 
 ### How does it work ?
 
-FUSE does almost everything. DistillerFS only sends a message to syslog when called by FUSE and then let the real filesystem do the rest of the job.
+FUSE does almost everything. DistillerFS only store info, when called by FUSE and then let the real filesystem do the rest of the job.
 
 ## Simplest usage
 
