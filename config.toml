@@ -1,0 +1,23 @@
+# Here is distiller config
+#
+# list of available FUSE operations:
+# access, chmod, chown, fsync, getattr, getxattr, link, listxattr, mkdir,
+# mknod, open, read, readdir, readlink, release, removexattr, rename, rmdir,
+# setxattr, statfs, symlink, truncate, unlink, utime, utimens, write.
+
+[filter]
+    # By default, logged all success operations
+    open="success"
+    write="success"
+    read="success"
+    readdir="success"
+    readlink="success"
+    getattr="success"
+
+[exclude]
+    # Paths (prefixes) excluded from logging
+    # paths=["/out","/kapsys"]
+
+[include_only]
+    # Paths (prefixes) included into logging
+    # paths=["/vendor","/prebuilts", "/external"]
