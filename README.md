@@ -5,6 +5,19 @@
 DistillerFS is a [FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)-based filesystem which can log operations that happens in it.
 Based on [loggedFS](https://github.com/rflament/loggedfs) code.
 
+The main goal of creating this FS was to reduce the size of large repositories, such as [Android AOSP](http://androidxref.com) and others like it. A modern repository for building Android 11 takes over 100 gigabytes, with only a fraction of it being needed to build a specific project. DistillerFS allows you to track which files were actually accessed and thus select only the files needed for your particular build from the complete repository.
+
+The general method to "distill" the necessary files is as follows:
+```
+start_distfs.sh
+cd OriginalRepo
+make
+stop_distfs.sh
+process_log.lua access.log /home/user/OriginalRepo /home/user/DistilledRepo > copy_distist.sh
+sh copy_dist.sh
+```
+In the configuration file, you have to specify the list of logged directories and (if needed) the list of directories excluded from logging (in case of Android it is "/out").
+
 ### How does it work ?
 
 FUSE does almost everything. DistillerFS only store info, when called by FUSE and then let the real filesystem do the rest of the job.
