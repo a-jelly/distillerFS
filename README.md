@@ -104,6 +104,16 @@ You should see logs like these :
 [.A.d......................]:0000000029:/
 ```
 
+The format of each entry (except for comments that start with '\#') is as follows:
+```
+[access flags]:counter:path
+```
+
+Where:  
+**access flags** - a list of operations that were performed with the file  
+**counter** - total number of operations    
+**path** - absolute path counting from the root of the mount point  
+
 If you have a configuration file to use you should use this command:
 
     ./distillerfs -c config.toml -p /var
